@@ -1,0 +1,16 @@
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\bin\Debug\OpenErpMB.exe.config
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\bin\Debug\OpenErpMB.exe.manifest
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\bin\Debug\OpenErpMB.application
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\bin\Debug\OpenErpMB.exe
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\bin\Debug\OpenErpMB.pdb
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\OpenErpMB.AboutBox1.resources
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\OpenErpMB.Form1.resources
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\OpenErpMB.Properties.Resources.resources
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\GenerateResource-ResGen.read.7.tlog
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\OpenErpMB.exe.manifest
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\OpenErpMB.application
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\OpenErpMB.exe
+D:\VS2010_WorkSpace\Projects\OpenErpMB\OpenErpMB\obj\x86\Debug\OpenErpMB.pdb
