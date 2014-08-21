@@ -1,35 +1,17 @@
 OOBD
 ====
-
-
-
 Open Objects Module Builder 1.0
-
-
 
 AGPL3.0
 
+å¼€æ”¾çš„å¯¹è±¡æ¨¡å—ç”Ÿæˆå™¨
 
+è¾…åŠ©Odoo(OpenERP)äºŒæ¬¡å¼€å‘
 
-¿ª·ÅµÄ¶ÔÏóÄ£¿éÉú³ÉÆ÷
+å¼€å‘è¯­è¨€C#
 
+å»ºè®®
+å¼€å‘çŽ¯å¢ƒã€€window7 + visualstudio2010
 
-
-¸¨ÖúOdoo(OpenERP)¶þ´Î¿ª·¢
-
-
-
-
-ÓïÑÔC#
-½¨Òé
-
-¿ª·¢»·¾³¡¡window7 + visualstudio2010
-
-
-
-
-Author: Íõ´ºÀ´¡¡Õã½­.Äþ²¨  @2013
-
-
-
-Contract: QQ 363682158¡¡ÒÀ³¾
+Author: çŽ‹æ˜¥æ¥ã€€æµ™æ±Ÿ.å®æ³¢  @2013
+Contract: QQ 363682158ã€€ä¾å°˜
