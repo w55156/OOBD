@@ -31,13 +31,13 @@ namespace OpenErpMB
         private bool Generate()  //生成模块方法
         {
             #region 获取变量
-            string model_distrib = tbMname.Text.Trim();
+            string model_discrib = tbMname.Text.Trim();
             string model_name = tbTable.Text.Trim();
             string model_info = tbMdescription.Text.Trim();
             string model_depend = tbMdepends.Text.Trim();
             string website = this.tbWebsite.Text.Trim();  //网站URL
             string pMenuID = this.tbPmenuID.Text.Trim();  //（父）上级菜单ID
-            if (string.IsNullOrEmpty(model_distrib))
+            if (string.IsNullOrEmpty(model_discrib))
             {
                 MessageBox.Show("模块名称 不能为空!!!");
                 return false;
@@ -102,7 +102,7 @@ namespace OpenErpMB
                         sw_openerp.WriteLine("");
                         sw_openerp.WriteLine("");
                         sw_openerp.WriteLine("{");
-                        sw_openerp.WriteLine("  \'name\': \'" + model_distrib + "\',");
+                        sw_openerp.WriteLine("  \'name\': \'" + model_discrib + "\',");
                         sw_openerp.WriteLine("  \'version\': \'0.1\',");
                         sw_openerp.WriteLine("  \"category\" : \"Generic Modules/Others\",");
                         sw_openerp.WriteLine("  \'description\': \"" + model_info + "\",");
@@ -168,7 +168,7 @@ namespace OpenErpMB
                         sw_model.WriteLine("");
                         sw_model.WriteLine("class " + model_name + "(osv.osv):");
                         sw_model.WriteLine("    _name = \'" + model_name + "\'");
-                        sw_model.WriteLine("    _description = u\'" + model_distrib + "\'");
+                        sw_model.WriteLine("    _description = u\'" + model_discrib + "\'");
                         sw_model.WriteLine("    _log_access = True");
                         sw_model.WriteLine("    _auto = True");
 
@@ -213,18 +213,63 @@ namespace OpenErpMB
                         StreamWriter sw_model_view = new StreamWriter(fs_model_view, Encoding.UTF8);
                         sw_model_view.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
                         sw_model_view.WriteLine("<openerp>");
-                        sw_model_view.WriteLine("<data>");
+                        sw_model_view.WriteLine("  <data>");
+
+                        #region 搜索视图定义
+                        sw_model_view.WriteLine("");
+                        sw_model_view.WriteLine("");
+                        sw_model_view.WriteLine("    <!-- Search View -->");
+                        sw_model_view.WriteLine("    <record model=\"ir.ui.view\" id=\"view_" + model_name + "_search\">");
+                        sw_model_view.WriteLine("      <field name=\"name\">" + model_name + ".search</field>");
+                        sw_model_view.WriteLine("      <field name=\"model\">" + model_name + "</field>");
+                        sw_model_view.WriteLine("      <field name=\"type\">search</field>");
+                        sw_model_view.WriteLine("      <field name=\"arch\" type=\"xml\">");
+                        sw_model_view.WriteLine("        <search string=\"" + model_name + "\">");
+
+                        #region  写入字段
+                        try
+                        {
+
+                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
+                            {
+                                while (CkDataGridRowValid(row))
+                                {
+                                    string field_name = row.Cells["FieldName"].Value.ToString().Trim();
+
+                                    if (row.Cells["Searchable"].Value.ToString() == "True")
+                                    {
+
+                                        sw_model_view.WriteLine("          <field name=\"" + field_name + "\" />");  //字段
+                                        break;
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                        catch (Exception e_str)
+                        {
+
+                            MessageBox.Show("搜索视图定义：写入字段 程序出错,请联系作者!!!" + e_str.ToString());
+                        }
+                        #endregion
+
+                        sw_model_view.WriteLine("        </search>");
+                        sw_model_view.WriteLine("      </field>");
+                        sw_model_view.WriteLine("    </record>");
+                        #endregion
 
                         #region 树形视图定义
                         sw_model_view.WriteLine("");
                         sw_model_view.WriteLine("");
-                        sw_model_view.WriteLine(" <!-- tree view -->");
-                        sw_model_view.WriteLine("<record model=\"ir.ui.view\" id=\"" + model_name + "_tree_view\">");
-                        sw_model_view.WriteLine("<field name=\"name\">" + model_name + ".tree</field>");
-                        sw_model_view.WriteLine("<field name=\"model\">" + model_name + "</field>");
-                        sw_model_view.WriteLine("<field name=\"type\">tree</field>");
-                        sw_model_view.WriteLine("<field name=\"arch\" type=\"xml\">");
-                        sw_model_view.WriteLine("<tree string=\"" + model_distrib + "\">");
+                        sw_model_view.WriteLine("    <!-- tree view -->");
+                        sw_model_view.WriteLine("    <record model=\"ir.ui.view\" id=\"view_" + model_name + "_tree\">");
+                        sw_model_view.WriteLine("      <field name=\"name\">" + model_name + ".tree</field>");
+                        sw_model_view.WriteLine("      <field name=\"model\">" + model_name + "</field>");
+                        sw_model_view.WriteLine("      <field name=\"type\">tree</field>");
+                        sw_model_view.WriteLine("      <field name=\"arch\" type=\"xml\">");
+                        sw_model_view.WriteLine("        <tree string=\"" + model_name + "\">");
 
                         #region  写入字段
                         try
@@ -243,9 +288,9 @@ namespace OpenErpMB
                                     }
                                     if (row.Cells["TView"].Value.ToString() == "True")
                                     {
-                                       tview = "0";
+                                        tview = "0";
                                     }
-                                    sw_model_view.WriteLine("<field name=\"" + field_name + "\" select=\"" + slt + "\" invisible=\"" + tview + "\" />");  //字段
+                                    sw_model_view.WriteLine("          <field name=\"" + field_name + "\" select=\"" + slt + "\" invisible=\"" + tview + "\" />");  //字段
                                     break;
                                 }
 
@@ -259,75 +304,133 @@ namespace OpenErpMB
                         }
                         #endregion
 
-                        sw_model_view.WriteLine("</tree>");
-                        sw_model_view.WriteLine("</field>");
-                        sw_model_view.WriteLine("</record>");
+                        sw_model_view.WriteLine("        </tree>");
+                        sw_model_view.WriteLine("      </field>");
+                        sw_model_view.WriteLine("    </record>");
                         #endregion
 
                         #region  表单视图定义
-                        sw_model_view.WriteLine("");
-                        sw_model_view.WriteLine("");
-                        sw_model_view.WriteLine(" <!-- form view -->");
-                        sw_model_view.WriteLine("<record model=\"ir.ui.view\" id=\"" + model_name + "_form_view\">");
-                        sw_model_view.WriteLine("<field name=\"name\">" + model_name + ".form</field>");
-                        sw_model_view.WriteLine("<field name=\"model\">" + model_name + "</field>");
-                        sw_model_view.WriteLine("<field name=\"type\">form</field>");
-                        sw_model_view.WriteLine("<field name=\"arch\" type=\"xml\">");
-                        sw_model_view.WriteLine("<form string=\"" + model_distrib + "\">");
-
-                        #region  写入字段
-                        try
+                        #region sheet视图
+                        if (this.rb1.Checked)
                         {
-
-                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
+                            sw_model_view.WriteLine("");
+                            sw_model_view.WriteLine("");
+                            sw_model_view.WriteLine("    <!-- form view -->");
+                            sw_model_view.WriteLine("    <record model=\"ir.ui.view\" id=\"view_" + model_name + "_form\">");
+                            sw_model_view.WriteLine("      <field name=\"name\">" + model_name + ".form</field>");
+                            sw_model_view.WriteLine("      <field name=\"model\">" + model_name + "</field>");
+                            sw_model_view.WriteLine("      <field name=\"type\">form</field>");
+                            sw_model_view.WriteLine("      <field name=\"arch\" type=\"xml\">");
+                            sw_model_view.WriteLine("        <form string=\"" + model_name + "\" version=\"7.0\">");
+                            sw_model_view.WriteLine("          <header>");
+                            sw_model_view.WriteLine("          </header>");
+                            sw_model_view.WriteLine("          <sheet>");
+                            sw_model_view.WriteLine("            <group>");
+                            #region  写入字段
+                            try
                             {
-                                while (CkDataGridRowValid(row))
+
+                                foreach (DataGridViewRow row in this.dataGridView1.Rows)
                                 {
-                                    string field_name = row.Cells["FieldName"].Value.ToString().Trim();
-                                    string fview = "1";
-                                    if (row.Cells["FView"].Value.ToString() == "True")
+                                    while (CkDataGridRowValid(row))
                                     {
-                                        fview = "0";
+                                        string field_name = row.Cells["FieldName"].Value.ToString().Trim();
+                                        string fview = "1";
+                                        if (row.Cells["FView"].Value.ToString() == "True")
+                                        {
+                                            fview = "0";
+                                        }
+                                        //sw_model_view.WriteLine("            <label for=\"" + field_name + "\" />");  //字段
+                                        sw_model_view.WriteLine("              <field name=\"" + field_name + "\" invisible=\"" + fview + "\" />");  //字段
+                                        break;
                                     }
-                                    sw_model_view.WriteLine("<field name=\"" + field_name + "\" invisible=\"" + fview + "\" />");  //字段
-                                    break;
+
                                 }
 
                             }
+                            catch (Exception e_str)
+                            {
 
-                        }
-                        catch (Exception e_str)
-                        {
-
-                            MessageBox.Show("表单视图定义：写入字段 程序出错,请联系作者!!!" + e_str.ToString());
+                                MessageBox.Show("表单视图定义：写入字段 程序出错,请联系作者!!!" + e_str.ToString());
+                            }
+                            #endregion
+                            sw_model_view.WriteLine("            </group>");
+                            sw_model_view.WriteLine("          </sheet>");
+                            sw_model_view.WriteLine("        </form>");
+                            sw_model_view.WriteLine("      </field>");
+                            sw_model_view.WriteLine("    </record>");
                         }
                         #endregion
+                        
+                        #region 普通视图
+                        else
+                        {
+                            sw_model_view.WriteLine("");
+                            sw_model_view.WriteLine("");
+                            sw_model_view.WriteLine("    <!-- form view -->");
+                            sw_model_view.WriteLine("    <record model=\"ir.ui.view\" id=\"view_" + model_name + "_form\">");
+                            sw_model_view.WriteLine("      <field name=\"name\">" + model_name + ".form</field>");
+                            sw_model_view.WriteLine("      <field name=\"model\">" + model_name + "</field>");
+                            sw_model_view.WriteLine("      <field name=\"type\">form</field>");
+                            sw_model_view.WriteLine("      <field name=\"arch\" type=\"xml\">");
+                            sw_model_view.WriteLine("        <form string=\"" + model_name + "\" version=\"7.0\">");
+                            sw_model_view.WriteLine("          <group>");
+                            #region  写入字段
+                            try
+                            {
 
-                        sw_model_view.WriteLine("</form>");
-                        sw_model_view.WriteLine("</field>");
-                        sw_model_view.WriteLine("</record>");
+                                foreach (DataGridViewRow row in this.dataGridView1.Rows)
+                                {
+                                    while (CkDataGridRowValid(row))
+                                    {
+                                        string field_name = row.Cells["FieldName"].Value.ToString().Trim();
+                                        string fview = "1";
+                                        if (row.Cells["FView"].Value.ToString() == "True")
+                                        {
+                                            fview = "0";
+                                        }
+                                        sw_model_view.WriteLine("            <field name=\"" + field_name + "\" invisible=\"" + fview + "\" />");  //字段
+                                        break;
+                                    }
+
+                                }
+
+                            }
+                            catch (Exception e_str)
+                            {
+
+                                MessageBox.Show("表单视图定义：写入字段 程序出错,请联系作者!!!" + e_str.ToString());
+                            }
+                            #endregion
+                            sw_model_view.WriteLine("          </group>");
+                            sw_model_view.WriteLine("        </form>");
+                            sw_model_view.WriteLine("      </field>");
+                            sw_model_view.WriteLine("    </record>");
+                        }
+                        #endregion
                         #endregion
 
                         #region  动作定义
                         sw_model_view.WriteLine("");
                         sw_model_view.WriteLine("");
-                        sw_model_view.WriteLine(" <!-- actions -->");
-                        sw_model_view.WriteLine("<record model=\"ir.actions.act_window\" id=\"action_" + model_name + "_form\">");
-                        sw_model_view.WriteLine("<field name=\"name\">" + model_distrib + "</field>");
-                        sw_model_view.WriteLine("<field name=\"type\">ir.actions.act_window</field>");
-                        sw_model_view.WriteLine("<field name=\"res_model\">" + model_name + "</field>");
-                        sw_model_view.WriteLine("<field name=\"view_type\">form</field>");
-                        sw_model_view.WriteLine("<field name=\"view_mode\">tree,form</field>");
-                        sw_model_view.WriteLine("<field name=\"view_id\" ref=\"" + model_name + "_tree_view\"/>");
-                        sw_model_view.WriteLine("</record>");
+                        sw_model_view.WriteLine("    <!-- actions -->");
+                        sw_model_view.WriteLine("    <record model=\"ir.actions.act_window\" id=\"action_" + model_name + "_form\">");
+                        sw_model_view.WriteLine("      <field name=\"name\">" + model_discrib + "</field>");
+                        sw_model_view.WriteLine("      <field name=\"type\">ir.actions.act_window</field>");
+                        sw_model_view.WriteLine("      <field name=\"res_model\">" + model_name + "</field>");
+                        sw_model_view.WriteLine("      <field name=\"view_type\">form</field>");
+                        sw_model_view.WriteLine("      <field name=\"view_mode\">tree,form</field>");
+                        sw_model_view.WriteLine("      <field name=\"view_id\" ref=\"" + model_name + "_tree_view\"/>");
+                        sw_model_view.WriteLine("      <field name=\"search_view_id\" ref=\"" + model_name + "_search_view\"/>");
+                        sw_model_view.WriteLine("    </record>");
                         #endregion
 
                         #region  菜单定义
                         sw_model_view.WriteLine("");
                         sw_model_view.WriteLine("");
-                        sw_model_view.WriteLine(" <!-- menuitem -->");
-                        sw_model_view.WriteLine("<menuitem name=\"" + model_distrib + "\" parent=\"" + pMenuID + "\" id=\"menu_" + model_name + "_form\" action=\"action_" + model_name + "_form\"/>");
-                        sw_model_view.WriteLine("</data>");
+                        sw_model_view.WriteLine("    <!-- menuitem -->");
+                        sw_model_view.WriteLine("    <menuitem name=\"" + model_discrib + "\" id=\"menu_" + model_name + "_form\" parent=\"" + pMenuID + "\" action=\"action_" + model_name + "_form\"/>");
+                        sw_model_view.WriteLine("  </data>");
                         sw_model_view.WriteLine("</openerp>");
                         #endregion
 

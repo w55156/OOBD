@@ -59,6 +59,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tbWebsite = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.rb2 = new System.Windows.Forms.RadioButton();
+            this.rb1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,7 +113,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(538, 92);
+            this.label6.Location = new System.Drawing.Point(768, 68);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 6;
@@ -135,9 +137,9 @@
             // 
             // tbAuthor
             // 
-            this.tbAuthor.Location = new System.Drawing.Point(578, 90);
+            this.tbAuthor.Location = new System.Drawing.Point(802, 64);
             this.tbAuthor.Name = "tbAuthor";
-            this.tbAuthor.Size = new System.Drawing.Size(197, 21);
+            this.tbAuthor.Size = new System.Drawing.Size(67, 21);
             this.tbAuthor.TabIndex = 10;
             this.tbAuthor.Text = "王春来";
             // 
@@ -325,20 +327,42 @@
             // 
             // tbWebsite
             // 
-            this.tbWebsite.Location = new System.Drawing.Point(578, 63);
+            this.tbWebsite.Location = new System.Drawing.Point(578, 64);
             this.tbWebsite.Name = "tbWebsite";
-            this.tbWebsite.Size = new System.Drawing.Size(197, 21);
+            this.tbWebsite.Size = new System.Drawing.Size(169, 21);
             this.tbWebsite.TabIndex = 20;
             this.tbWebsite.Text = "http://";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(538, 66);
+            this.label8.Location = new System.Drawing.Point(538, 68);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 19;
             this.label8.Text = "网站";
+            // 
+            // rb2
+            // 
+            this.rb2.AutoSize = true;
+            this.rb2.Location = new System.Drawing.Point(657, 97);
+            this.rb2.Name = "rb2";
+            this.rb2.Size = new System.Drawing.Size(71, 16);
+            this.rb2.TabIndex = 21;
+            this.rb2.Text = "普通视图";
+            this.rb2.UseVisualStyleBackColor = true;
+            // 
+            // rb1
+            // 
+            this.rb1.AutoSize = true;
+            this.rb1.Checked = true;
+            this.rb1.Location = new System.Drawing.Point(578, 97);
+            this.rb1.Name = "rb1";
+            this.rb1.Size = new System.Drawing.Size(77, 16);
+            this.rb1.TabIndex = 22;
+            this.rb1.TabStop = true;
+            this.rb1.Text = "sheet视图";
+            this.rb1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -346,6 +370,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1001, 575);
+            this.Controls.Add(this.rb1);
+            this.Controls.Add(this.rb2);
             this.Controls.Add(this.tbWebsite);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.tbPmenuID);
@@ -409,6 +435,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Translate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TView;
         private System.Windows.Forms.DataGridViewCheckBoxColumn FView;
+        private System.Windows.Forms.RadioButton rb2;
+        private System.Windows.Forms.RadioButton rb1;
     }
 }
 

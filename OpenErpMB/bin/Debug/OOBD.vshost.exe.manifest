@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OOBD.exe" size="79360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OOBD.exe" size="81920">
       <assemblyIdentity name="OOBD" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>gi9tECw1f5LqQ4sRPJo5m+3tHY4=</dsig:DigestValue>
+        <dsig:DigestValue>P5pZvmgmidVU+ilGWsRlW2NcDPo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
