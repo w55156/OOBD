@@ -33,6 +33,11 @@ namespace OpenErpMB
             #region 获取变量
             string model_discrib = tbMname.Text.Trim();
             string model_name = tbTable.Text.Trim();
+            string model_name2 = model_name;
+            if (model_name2.Contains("_"))
+            {
+                model_name2 = model_name2.Replace('_','.');
+            }
             string model_info = tbMdescription.Text.Trim();
             string model_depend = tbMdepends.Text.Trim();
             string website = this.tbWebsite.Text.Trim();  //网站URL
@@ -90,7 +95,7 @@ namespace OpenErpMB
                         sw_init.WriteLine("# -*- encoding: utf-8 -*-");
                         sw_init.WriteLine("");
                         sw_init.WriteLine("");
-                        sw_init.WriteLine("import " + model_name);
+                        sw_init.WriteLine("import " + model_name2);
                         sw_init.Close();
                         fs_init.Close();
                         #endregion
@@ -167,7 +172,7 @@ namespace OpenErpMB
                         sw_model.WriteLine("from openerp.osv import fields");
                         sw_model.WriteLine("");
                         sw_model.WriteLine("class " + model_name + "(osv.osv):");
-                        sw_model.WriteLine("    _name = \'" + model_name + "\'");
+                        sw_model.WriteLine("    _name = \'" + model_name2 + "\'");
                         sw_model.WriteLine("    _description = u\'" + model_discrib + "\'");
                         sw_model.WriteLine("    _log_access = True");
                         sw_model.WriteLine("    _auto = True");
@@ -203,7 +208,8 @@ namespace OpenErpMB
                         sw_model.WriteLine("          }");
                         #endregion
 
-                        sw_model.WriteLine(model_name + "() #对象定义结束");
+                        //sw_model.WriteLine(model_name + "() #对象定义结束");  2014.09.04
+                        sw_model.WriteLine("#对象定义结束");
                         sw_model.Close();
                         fs_model.Close();
                         #endregion
@@ -221,7 +227,7 @@ namespace OpenErpMB
                         sw_model_view.WriteLine("    <!-- Search View -->");
                         sw_model_view.WriteLine("    <record model=\"ir.ui.view\" id=\"view_" + model_name + "_search\">");
                         sw_model_view.WriteLine("      <field name=\"name\">" + model_name + ".search</field>");
-                        sw_model_view.WriteLine("      <field name=\"model\">" + model_name + "</field>");
+                        sw_model_view.WriteLine("      <field name=\"model\">" + model_name2 + "</field>");
                         sw_model_view.WriteLine("      <field name=\"type\">search</field>");
                         sw_model_view.WriteLine("      <field name=\"arch\" type=\"xml\">");
                         sw_model_view.WriteLine("        <search string=\"" + model_name + "\">");
@@ -266,7 +272,7 @@ namespace OpenErpMB
                         sw_model_view.WriteLine("    <!-- tree view -->");
                         sw_model_view.WriteLine("    <record model=\"ir.ui.view\" id=\"view_" + model_name + "_tree\">");
                         sw_model_view.WriteLine("      <field name=\"name\">" + model_name + ".tree</field>");
-                        sw_model_view.WriteLine("      <field name=\"model\">" + model_name + "</field>");
+                        sw_model_view.WriteLine("      <field name=\"model\">" + model_name2 + "</field>");
                         sw_model_view.WriteLine("      <field name=\"type\">tree</field>");
                         sw_model_view.WriteLine("      <field name=\"arch\" type=\"xml\">");
                         sw_model_view.WriteLine("        <tree string=\"" + model_name + "\">");
@@ -318,7 +324,7 @@ namespace OpenErpMB
                             sw_model_view.WriteLine("    <!-- form view -->");
                             sw_model_view.WriteLine("    <record model=\"ir.ui.view\" id=\"view_" + model_name + "_form\">");
                             sw_model_view.WriteLine("      <field name=\"name\">" + model_name + ".form</field>");
-                            sw_model_view.WriteLine("      <field name=\"model\">" + model_name + "</field>");
+                            sw_model_view.WriteLine("      <field name=\"model\">" + model_name2 + "</field>");
                             sw_model_view.WriteLine("      <field name=\"type\">form</field>");
                             sw_model_view.WriteLine("      <field name=\"arch\" type=\"xml\">");
                             sw_model_view.WriteLine("        <form string=\"" + model_name + "\" version=\"7.0\">");
@@ -370,7 +376,7 @@ namespace OpenErpMB
                             sw_model_view.WriteLine("    <!-- form view -->");
                             sw_model_view.WriteLine("    <record model=\"ir.ui.view\" id=\"view_" + model_name + "_form\">");
                             sw_model_view.WriteLine("      <field name=\"name\">" + model_name + ".form</field>");
-                            sw_model_view.WriteLine("      <field name=\"model\">" + model_name + "</field>");
+                            sw_model_view.WriteLine("      <field name=\"model\">" + model_name2 + "</field>");
                             sw_model_view.WriteLine("      <field name=\"type\">form</field>");
                             sw_model_view.WriteLine("      <field name=\"arch\" type=\"xml\">");
                             sw_model_view.WriteLine("        <form string=\"" + model_name + "\" version=\"7.0\">");
@@ -417,11 +423,11 @@ namespace OpenErpMB
                         sw_model_view.WriteLine("    <record model=\"ir.actions.act_window\" id=\"action_" + model_name + "_form\">");
                         sw_model_view.WriteLine("      <field name=\"name\">" + model_discrib + "</field>");
                         sw_model_view.WriteLine("      <field name=\"type\">ir.actions.act_window</field>");
-                        sw_model_view.WriteLine("      <field name=\"res_model\">" + model_name + "</field>");
+                        sw_model_view.WriteLine("      <field name=\"res_model\">" + model_name2 + "</field>");
                         sw_model_view.WriteLine("      <field name=\"view_type\">form</field>");
                         sw_model_view.WriteLine("      <field name=\"view_mode\">tree,form</field>");
-                        sw_model_view.WriteLine("      <field name=\"view_id\" ref=\"" + model_name + "_tree_view\"/>");
-                        sw_model_view.WriteLine("      <field name=\"search_view_id\" ref=\"" + model_name + "_search_view\"/>");
+                        sw_model_view.WriteLine("      <field name=\"view_id\" ref=\"view_" + model_name + "_tree\"/>");
+                        sw_model_view.WriteLine("      <field name=\"search_view_id\" ref=\"view_" + model_name + "_search\"/>");
                         sw_model_view.WriteLine("    </record>");
                         #endregion
 
