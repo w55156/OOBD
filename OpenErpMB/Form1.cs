@@ -36,7 +36,7 @@ namespace OpenErpMB
             string model_name2 = model_name;
             if (model_name2.Contains("_"))
             {
-                model_name2 = model_name2.Replace('_','.');
+                model_name2 = model_name2.Replace('_', '.');
             }
             string model_info = tbMdescription.Text.Trim();
             string model_depend = tbMdepends.Text.Trim();
@@ -131,11 +131,62 @@ namespace OpenErpMB
                         StreamWriter sw_model = new StreamWriter(fs_model, Encoding.UTF8);
                         sw_model.WriteLine("# -*- encoding: utf-8 -*-");
                         sw_model.WriteLine("");
-                        sw_model.WriteLine("########################################################################################################################################");
-                        sw_model.WriteLine("#");
-                        sw_model.WriteLine("#    Created by OpenERP ModelBuilder, ChunLai Wang, NingBo ZheJiang China, @2013, QQ:363682158");
-                        sw_model.WriteLine("#");
-                        sw_model.WriteLine("#-------------------------------------------对象定义的完整属性说明-----------------------------------------------------------------");
+                        sw_model.WriteLine("################################################################################################");
+                        sw_model.WriteLine("#                                                                                              #");
+                        sw_model.WriteLine("#  Created by OpenERP ModelBuilder, ChunLai Wang, NingBo ZheJiang China, @2013, QQ:363682158   #");
+                        sw_model.WriteLine("#                                                                                              #");
+                        sw_model.WriteLine("################################################################################################");
+                        sw_model.WriteLine("");
+                        sw_model.WriteLine("");
+                        sw_model.WriteLine("from openerp.osv import osv");
+                        sw_model.WriteLine("from openerp.osv import fields");
+                        sw_model.WriteLine("");
+                        sw_model.WriteLine("class " + model_name + "(osv.osv):");
+                        sw_model.WriteLine("    _name = \'" + model_name2 + "\'");
+                        sw_model.WriteLine("    _description = u\'" + model_discrib + "\'");
+                        //sw_model.WriteLine("    _log_access = True");
+                        //sw_model.WriteLine("    _auto = True");
+
+                        #region  写入字段
+                        sw_model.WriteLine("    _columns = {");
+                        try
+                        {
+
+                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
+                            {
+                                while (CkDataGridRowValid(row))
+                                {
+                                    string field_label = row.Cells["FieldLabel"].Value.ToString().Trim();
+                                    string field_name = row.Cells["FieldName"].Value.ToString().Trim();
+                                    string required = row.Cells["Required"].Value.ToString().Trim();
+                                    string fied_type = row.Cells["FieldType"].Value.ToString().Trim();
+                                    if (required.Contains("True"))
+                                    {
+                                        sw_model.WriteLine("           \'" + field_name + "\' : fields." + fied_type + "(u\'" + field_label + "\',required=" + required + "),  ");
+                                    }
+                                    else
+                                    {
+                                        sw_model.WriteLine("           \'" + field_name + "\' : fields." + fied_type + "(u\'" + field_label + "\'),  ");
+                                    }
+
+                                    break;
+                                }
+
+                            }
+
+                        }
+                        catch (Exception e_str)
+                        {
+
+                            MessageBox.Show("写入文件 model_name.py：写入字段 程序出错,请联系作者!!!" + e_str.ToString());
+                        }
+                        sw_model.WriteLine("          }");
+                        #endregion
+                        //sw_model.WriteLine(model_name + "() #对象定义结束");  2014.09.04
+                        #region 发问追加对象字段说明
+                        sw_model.WriteLine("");
+                        sw_model.WriteLine("");
+                        sw_model.WriteLine("##################################对象定义的完整属性说明#########################################");
                         sw_model.WriteLine("#");
                         sw_model.WriteLine("#_auto：是否自动创建对象对应的Table，缺省值为: True,");
                         sw_model.WriteLine("#　　当安装或升级模块时，OpenERP会自动在数据库中为模块中定义的每个对象创建相应的Table,");
@@ -165,51 +216,8 @@ namespace OpenErpMB
                         sw_model.WriteLine("#_table: 待创建的数据库表名，缺省值是和_name一样，只是将.替换成_");
                         sw_model.WriteLine("#_inherits,_inherit: _inherits和_inherit都用于对象的继承。");
                         sw_model.WriteLine("#");
-                        sw_model.WriteLine("######################################################################################################################################");
-                        sw_model.WriteLine("");
-                        sw_model.WriteLine("");
-                        sw_model.WriteLine("from openerp.osv import osv");
-                        sw_model.WriteLine("from openerp.osv import fields");
-                        sw_model.WriteLine("");
-                        sw_model.WriteLine("class " + model_name + "(osv.osv):");
-                        sw_model.WriteLine("    _name = \'" + model_name2 + "\'");
-                        sw_model.WriteLine("    _description = u\'" + model_discrib + "\'");
-                        sw_model.WriteLine("    _log_access = True");
-                        sw_model.WriteLine("    _auto = True");
-
-                        #region  写入字段
-                        sw_model.WriteLine("    _columns = {");
-                        try
-                        {
-
-                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
-                            {
-                                while (CkDataGridRowValid(row))
-                                {
-                                    string field_label = row.Cells["FieldLabel"].Value.ToString().Trim();
-                                    string field_name = row.Cells["FieldName"].Value.ToString().Trim();
-                                    string required = row.Cells["Required"].Value.ToString().Trim();
-                                    string fied_type = row.Cells["FieldType"].Value.ToString().Trim();
-                                    string searchable = row.Cells["Searchable"].Value.ToString().Trim();
-                                    string read_only = row.Cells["ReadOnly"].Value.ToString().Trim();
-                                    string translate = row.Cells["Translate"].Value.ToString().Trim();
-                                    sw_model.WriteLine("           \'" + field_name + "\' : fields." + fied_type + "(u\'" + field_label + "\',readonly=" + read_only + ",required=" + required + ",translate=" + translate + "),  ");
-                                    break;
-                                }
-
-                            }
-
-                        }
-                        catch (Exception e_str)
-                        {
-
-                            MessageBox.Show("写入文件 model_name.py：写入字段 程序出错,请联系作者!!!" + e_str.ToString());
-                        }
-                        sw_model.WriteLine("          }");
+                        sw_model.WriteLine("####################################################################################################");
                         #endregion
-
-                        //sw_model.WriteLine(model_name + "() #对象定义结束");  2014.09.04
-                        sw_model.WriteLine("#对象定义结束");
                         sw_model.Close();
                         fs_model.Close();
                         #endregion
@@ -220,7 +228,7 @@ namespace OpenErpMB
                         sw_model_view.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
                         sw_model_view.WriteLine("<openerp>");
                         sw_model_view.WriteLine("  <data>");
-
+                        /*
                         #region 搜索视图定义
                         sw_model_view.WriteLine("");
                         sw_model_view.WriteLine("");
@@ -265,7 +273,7 @@ namespace OpenErpMB
                         sw_model_view.WriteLine("      </field>");
                         sw_model_view.WriteLine("    </record>");
                         #endregion
-
+                        */
                         #region 树形视图定义
                         sw_model_view.WriteLine("");
                         sw_model_view.WriteLine("");
@@ -286,17 +294,16 @@ namespace OpenErpMB
                                 while (CkDataGridRowValid(row))
                                 {
                                     string field_name = row.Cells["FieldName"].Value.ToString().Trim();
-                                    string slt = "0";
                                     string tview = "1";
-                                    if (row.Cells["Searchable"].Value.ToString() == "True")
-                                    {
-                                        slt = "1";
-                                    }
                                     if (row.Cells["TView"].Value.ToString() == "True")
                                     {
                                         tview = "0";
+                                        sw_model_view.WriteLine("          <field name=\"" + field_name + "\" />");  //字段
                                     }
-                                    sw_model_view.WriteLine("          <field name=\"" + field_name + "\" select=\"" + slt + "\" invisible=\"" + tview + "\" />");  //字段
+                                    else
+                                    {
+                                        sw_model_view.WriteLine("          <field name=\"" + field_name + "\"" + " invisible=\"" + tview + "\" />");  //字段
+                                    }
                                     break;
                                 }
 
@@ -345,9 +352,13 @@ namespace OpenErpMB
                                         if (row.Cells["FView"].Value.ToString() == "True")
                                         {
                                             fview = "0";
+                                            sw_model_view.WriteLine("              <field name=\"" + field_name + "\" />");  //字段
+                                        }
+                                        else
+                                        {
+                                            sw_model_view.WriteLine("              <field name=\"" + field_name + "\" invisible=\"" + fview + "\" />");  //字段
                                         }
                                         //sw_model_view.WriteLine("            <label for=\"" + field_name + "\" />");  //字段
-                                        sw_model_view.WriteLine("              <field name=\"" + field_name + "\" invisible=\"" + fview + "\" />");  //字段
                                         break;
                                     }
 
@@ -367,7 +378,7 @@ namespace OpenErpMB
                             sw_model_view.WriteLine("    </record>");
                         }
                         #endregion
-                        
+
                         #region 普通视图
                         else
                         {
@@ -394,8 +405,12 @@ namespace OpenErpMB
                                         if (row.Cells["FView"].Value.ToString() == "True")
                                         {
                                             fview = "0";
+                                            sw_model_view.WriteLine("            <field name=\"" + field_name + "\" />");  //字段
                                         }
-                                        sw_model_view.WriteLine("            <field name=\"" + field_name + "\" invisible=\"" + fview + "\" />");  //字段
+                                        else
+                                        {
+                                            sw_model_view.WriteLine("            <field name=\"" + field_name + "\" invisible=\"" + fview + "\" />");  //字段
+                                        }
                                         break;
                                     }
 
@@ -427,7 +442,7 @@ namespace OpenErpMB
                         sw_model_view.WriteLine("      <field name=\"view_type\">form</field>");
                         sw_model_view.WriteLine("      <field name=\"view_mode\">tree,form</field>");
                         sw_model_view.WriteLine("      <field name=\"view_id\" ref=\"view_" + model_name + "_tree\"/>");
-                        sw_model_view.WriteLine("      <field name=\"search_view_id\" ref=\"view_" + model_name + "_search\"/>");
+                        //sw_model_view.WriteLine("      <field name=\"search_view_id\" ref=\"view_" + model_name + "_search\"/>");
                         sw_model_view.WriteLine("    </record>");
                         #endregion
 
@@ -471,9 +486,6 @@ namespace OpenErpMB
         {
             e.Row.Cells["FieldType"].Value = "char";
             e.Row.Cells["Required"].Value = true;
-            e.Row.Cells["ReadOnly"].Value = false;
-            e.Row.Cells["Searchable"].Value = true;
-            e.Row.Cells["Translate"].Value = true;
             e.Row.Cells["TView"].Value = true;
             e.Row.Cells["FView"].Value = true;
         }

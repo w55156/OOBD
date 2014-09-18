@@ -42,15 +42,6 @@
             this.tbMdepends = new System.Windows.Forms.TextBox();
             this.cbPreX = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.FieldLabel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FieldName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FieldType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Required = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ReadOnly = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Searchable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Translate = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.TView = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.FView = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tbMdescription = new System.Windows.Forms.TextBox();
@@ -61,6 +52,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.rb2 = new System.Windows.Forms.RadioButton();
             this.rb1 = new System.Windows.Forms.RadioButton();
+            this.FieldLabel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FieldName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FieldType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Required = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TView = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.FView = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,9 +167,6 @@
             this.FieldName,
             this.FieldType,
             this.Required,
-            this.ReadOnly,
-            this.Searchable,
-            this.Translate,
             this.TView,
             this.FView});
             this.dataGridView1.Location = new System.Drawing.Point(3, 124);
@@ -185,99 +179,6 @@
             this.dataGridView1.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
-            // 
-            // FieldLabel
-            // 
-            this.FieldLabel.FillWeight = 29.06375F;
-            this.FieldLabel.HeaderText = "字段标签";
-            this.FieldLabel.Name = "FieldLabel";
-            this.FieldLabel.ToolTipText = "字段描述,请输入中文汉字";
-            // 
-            // FieldName
-            // 
-            this.FieldName.FillWeight = 29.06375F;
-            this.FieldName.HeaderText = "字段";
-            this.FieldName.Name = "FieldName";
-            this.FieldName.ToolTipText = "对应数据库里的字段,可以根据字段标签自动转换而来,默认以x_开始,表明是自定义字段";
-            // 
-            // FieldType
-            // 
-            this.FieldType.FillWeight = 29.06375F;
-            this.FieldType.HeaderText = "字段类型";
-            this.FieldType.Items.AddRange(new object[] {
-            "binary",
-            "boolean",
-            "char",
-            "date",
-            "datetime",
-            "float",
-            "html",
-            "integer",
-            "many2many",
-            "many2one",
-            "one2many",
-            "reference",
-            "selection",
-            "serialize",
-            "text"});
-            this.FieldType.Name = "FieldType";
-            this.FieldType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.FieldType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Required
-            // 
-            this.Required.FillWeight = 29.06375F;
-            this.Required.HeaderText = "必填";
-            this.Required.Name = "Required";
-            this.Required.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Required.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Required.ToolTipText = "勾选表示该字段为必填项。";
-            // 
-            // ReadOnly
-            // 
-            this.ReadOnly.FillWeight = 29.06375F;
-            this.ReadOnly.HeaderText = "只读";
-            this.ReadOnly.Name = "ReadOnly";
-            this.ReadOnly.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ReadOnly.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ReadOnly.ToolTipText = "勾选表示此字段为只读字段。";
-            // 
-            // Searchable
-            // 
-            this.Searchable.FillWeight = 29.06375F;
-            this.Searchable.HeaderText = "可搜索";
-            this.Searchable.Name = "Searchable";
-            this.Searchable.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Searchable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Searchable.ToolTipText = "默认不可搜索，勾选表示可搜索。";
-            // 
-            // Translate
-            // 
-            this.Translate.FillWeight = 29.06375F;
-            this.Translate.HeaderText = "可翻译";
-            this.Translate.Name = "Translate";
-            this.Translate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Translate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Translate.ToolTipText = "默认为不可翻译，勾选表示可翻译。";
-            // 
-            // TView
-            // 
-            this.TView.FalseValue = "";
-            this.TView.FillWeight = 32F;
-            this.TView.HeaderText = "TreeView可见";
-            this.TView.Name = "TView";
-            this.TView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TView.ToolTipText = "默认为可见";
-            this.TView.TrueValue = "";
-            // 
-            // FView
-            // 
-            this.FView.FillWeight = 30F;
-            this.FView.HeaderText = "FormView可见";
-            this.FView.Name = "FView";
-            this.FView.ToolTipText = "默认为可见";
-            this.FView.TrueValue = "1";
             // 
             // button2
             // 
@@ -364,6 +265,72 @@
             this.rb1.Text = "sheet视图";
             this.rb1.UseVisualStyleBackColor = true;
             // 
+            // FieldLabel
+            // 
+            this.FieldLabel.FillWeight = 29.06375F;
+            this.FieldLabel.HeaderText = "字段标签";
+            this.FieldLabel.Name = "FieldLabel";
+            this.FieldLabel.ToolTipText = "字段描述,请输入中文汉字";
+            // 
+            // FieldName
+            // 
+            this.FieldName.FillWeight = 29.06375F;
+            this.FieldName.HeaderText = "字段";
+            this.FieldName.Name = "FieldName";
+            this.FieldName.ToolTipText = "对应数据库里的字段,可以根据字段标签自动转换而来,默认以x_开始,表明是自定义字段";
+            // 
+            // FieldType
+            // 
+            this.FieldType.FillWeight = 29.06375F;
+            this.FieldType.HeaderText = "字段类型";
+            this.FieldType.Items.AddRange(new object[] {
+            "binary",
+            "boolean",
+            "char",
+            "date",
+            "datetime",
+            "float",
+            "html",
+            "integer",
+            "many2many",
+            "many2one",
+            "one2many",
+            "reference",
+            "selection",
+            "serialize",
+            "text"});
+            this.FieldType.Name = "FieldType";
+            this.FieldType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.FieldType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Required
+            // 
+            this.Required.FillWeight = 29.06375F;
+            this.Required.HeaderText = "必填";
+            this.Required.Name = "Required";
+            this.Required.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Required.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Required.ToolTipText = "勾选表示该字段为必填项。";
+            // 
+            // TView
+            // 
+            this.TView.FalseValue = "";
+            this.TView.FillWeight = 32F;
+            this.TView.HeaderText = "TreeView可见";
+            this.TView.Name = "TView";
+            this.TView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.TView.ToolTipText = "默认为可见";
+            this.TView.TrueValue = "";
+            // 
+            // FView
+            // 
+            this.FView.FillWeight = 30F;
+            this.FView.HeaderText = "FormView可见";
+            this.FView.Name = "FView";
+            this.FView.ToolTipText = "默认为可见";
+            this.FView.TrueValue = "1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -426,17 +393,14 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tbWebsite;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton rb2;
+        private System.Windows.Forms.RadioButton rb1;
         private System.Windows.Forms.DataGridViewTextBoxColumn FieldLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn FieldName;
         private System.Windows.Forms.DataGridViewComboBoxColumn FieldType;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Required;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ReadOnly;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Searchable;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Translate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TView;
         private System.Windows.Forms.DataGridViewCheckBoxColumn FView;
-        private System.Windows.Forms.RadioButton rb2;
-        private System.Windows.Forms.RadioButton rb1;
     }
 }
 
