@@ -183,7 +183,7 @@ namespace OpenErpMB
                         sw_model.WriteLine("          }");
                         #endregion
                         //sw_model.WriteLine(model_name + "() #对象定义结束");  2014.09.04
-                        #region 发问追加对象字段说明
+                        #region 追加对象字段说明
                         sw_model.WriteLine("");
                         sw_model.WriteLine("");
                         sw_model.WriteLine("##################################对象定义的完整属性说明#########################################");
@@ -228,7 +228,7 @@ namespace OpenErpMB
                         sw_model_view.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
                         sw_model_view.WriteLine("<openerp>");
                         sw_model_view.WriteLine("  <data>");
-                        /*
+                        
                         #region 搜索视图定义
                         sw_model_view.WriteLine("");
                         sw_model_view.WriteLine("");
@@ -254,9 +254,8 @@ namespace OpenErpMB
                                     {
 
                                         sw_model_view.WriteLine("          <field name=\"" + field_name + "\" />");  //字段
-                                        break;
                                     }
-
+                                    break;
                                 }
 
                             }
@@ -273,7 +272,7 @@ namespace OpenErpMB
                         sw_model_view.WriteLine("      </field>");
                         sw_model_view.WriteLine("    </record>");
                         #endregion
-                        */
+                        
                         #region 树形视图定义
                         sw_model_view.WriteLine("");
                         sw_model_view.WriteLine("");
@@ -488,6 +487,7 @@ namespace OpenErpMB
             e.Row.Cells["Required"].Value = true;
             e.Row.Cells["TView"].Value = true;
             e.Row.Cells["FView"].Value = true;
+            e.Row.Cells["Searchable"].Value = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)  //窗口加载事件

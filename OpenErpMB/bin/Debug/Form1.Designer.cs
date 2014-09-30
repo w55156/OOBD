@@ -58,12 +58,13 @@
             this.Required = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TView = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.FView = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Searchable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(915, 90);
+            this.button1.Location = new System.Drawing.Point(791, 91);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -101,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(902, 12);
+            this.label4.Location = new System.Drawing.Point(787, 38);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 12);
             this.label4.TabIndex = 4;
@@ -110,7 +111,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(768, 68);
+            this.label6.Location = new System.Drawing.Point(766, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 6;
@@ -134,7 +135,7 @@
             // 
             // tbAuthor
             // 
-            this.tbAuthor.Location = new System.Drawing.Point(802, 64);
+            this.tbAuthor.Location = new System.Drawing.Point(800, 10);
             this.tbAuthor.Name = "tbAuthor";
             this.tbAuthor.Size = new System.Drawing.Size(67, 21);
             this.tbAuthor.TabIndex = 10;
@@ -144,14 +145,14 @@
             // 
             this.tbMdepends.Location = new System.Drawing.Point(578, 8);
             this.tbMdepends.Name = "tbMdepends";
-            this.tbMdepends.Size = new System.Drawing.Size(291, 21);
+            this.tbMdepends.Size = new System.Drawing.Size(177, 21);
             this.tbMdepends.TabIndex = 11;
             this.tbMdepends.Text = "\'base\',";
             // 
             // cbPreX
             // 
             this.cbPreX.AutoSize = true;
-            this.cbPreX.Location = new System.Drawing.Point(969, 12);
+            this.cbPreX.Location = new System.Drawing.Point(854, 38);
             this.cbPreX.Name = "cbPreX";
             this.cbPreX.Size = new System.Drawing.Size(15, 14);
             this.cbPreX.TabIndex = 12;
@@ -168,11 +169,12 @@
             this.FieldType,
             this.Required,
             this.TView,
-            this.FView});
+            this.FView,
+            this.Searchable});
             this.dataGridView1.Location = new System.Drawing.Point(3, 124);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(993, 446);
+            this.dataGridView1.Size = new System.Drawing.Size(863, 446);
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -182,7 +184,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(915, 61);
+            this.button2.Location = new System.Drawing.Point(791, 62);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 14;
@@ -213,7 +215,7 @@
             // 
             this.tbPmenuID.Location = new System.Drawing.Point(578, 35);
             this.tbPmenuID.Name = "tbPmenuID";
-            this.tbPmenuID.Size = new System.Drawing.Size(291, 21);
+            this.tbPmenuID.Size = new System.Drawing.Size(177, 21);
             this.tbPmenuID.TabIndex = 18;
             this.toolTip1.SetToolTip(this.tbPmenuID, "请指定一个父菜单ID，可以激活odoo的开发者模式找到您想要的上级菜单。");
             // 
@@ -230,7 +232,7 @@
             // 
             this.tbWebsite.Location = new System.Drawing.Point(578, 64);
             this.tbWebsite.Name = "tbWebsite";
-            this.tbWebsite.Size = new System.Drawing.Size(169, 21);
+            this.tbWebsite.Size = new System.Drawing.Size(177, 21);
             this.tbWebsite.TabIndex = 20;
             this.tbWebsite.Text = "http://";
             // 
@@ -246,7 +248,7 @@
             // rb2
             // 
             this.rb2.AutoSize = true;
-            this.rb2.Location = new System.Drawing.Point(657, 97);
+            this.rb2.Location = new System.Drawing.Point(661, 97);
             this.rb2.Name = "rb2";
             this.rb2.Size = new System.Drawing.Size(71, 16);
             this.rb2.TabIndex = 21;
@@ -257,7 +259,7 @@
             // 
             this.rb1.AutoSize = true;
             this.rb1.Checked = true;
-            this.rb1.Location = new System.Drawing.Point(578, 97);
+            this.rb1.Location = new System.Drawing.Point(582, 97);
             this.rb1.Name = "rb1";
             this.rb1.Size = new System.Drawing.Size(77, 16);
             this.rb1.TabIndex = 22;
@@ -267,21 +269,21 @@
             // 
             // FieldLabel
             // 
-            this.FieldLabel.FillWeight = 29.06375F;
+            this.FieldLabel.FillWeight = 20F;
             this.FieldLabel.HeaderText = "字段标签";
             this.FieldLabel.Name = "FieldLabel";
             this.FieldLabel.ToolTipText = "字段描述,请输入中文汉字";
             // 
             // FieldName
             // 
-            this.FieldName.FillWeight = 29.06375F;
+            this.FieldName.FillWeight = 20F;
             this.FieldName.HeaderText = "字段";
             this.FieldName.Name = "FieldName";
             this.FieldName.ToolTipText = "对应数据库里的字段,可以根据字段标签自动转换而来,默认以x_开始,表明是自定义字段";
             // 
             // FieldType
             // 
-            this.FieldType.FillWeight = 29.06375F;
+            this.FieldType.FillWeight = 20F;
             this.FieldType.HeaderText = "字段类型";
             this.FieldType.Items.AddRange(new object[] {
             "binary",
@@ -305,7 +307,7 @@
             // 
             // Required
             // 
-            this.Required.FillWeight = 29.06375F;
+            this.Required.FillWeight = 20F;
             this.Required.HeaderText = "必填";
             this.Required.Name = "Required";
             this.Required.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -315,7 +317,7 @@
             // TView
             // 
             this.TView.FalseValue = "";
-            this.TView.FillWeight = 32F;
+            this.TView.FillWeight = 20F;
             this.TView.HeaderText = "TreeView可见";
             this.TView.Name = "TView";
             this.TView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -325,18 +327,24 @@
             // 
             // FView
             // 
-            this.FView.FillWeight = 30F;
+            this.FView.FillWeight = 20F;
             this.FView.HeaderText = "FormView可见";
             this.FView.Name = "FView";
             this.FView.ToolTipText = "默认为可见";
             this.FView.TrueValue = "1";
+            // 
+            // Searchable
+            // 
+            this.Searchable.FillWeight = 29.08507F;
+            this.Searchable.HeaderText = "SearchView启用";
+            this.Searchable.Name = "Searchable";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1001, 575);
+            this.ClientSize = new System.Drawing.Size(875, 575);
             this.Controls.Add(this.rb1);
             this.Controls.Add(this.rb2);
             this.Controls.Add(this.tbWebsite);
@@ -401,6 +409,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Required;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TView;
         private System.Windows.Forms.DataGridViewCheckBoxColumn FView;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Searchable;
     }
 }
 
