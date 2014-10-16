@@ -64,7 +64,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(791, 91);
+            this.button1.Location = new System.Drawing.Point(791, 94);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -102,7 +102,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(787, 38);
+            this.label4.Location = new System.Drawing.Point(508, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 12);
             this.label4.TabIndex = 4;
@@ -152,7 +152,7 @@
             // cbPreX
             // 
             this.cbPreX.AutoSize = true;
-            this.cbPreX.Location = new System.Drawing.Point(854, 38);
+            this.cbPreX.Location = new System.Drawing.Point(578, 97);
             this.cbPreX.Name = "cbPreX";
             this.cbPreX.Size = new System.Drawing.Size(15, 14);
             this.cbPreX.TabIndex = 12;
@@ -171,10 +171,10 @@
             this.TView,
             this.FView,
             this.Searchable});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 124);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 133);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(863, 446);
+            this.dataGridView1.Size = new System.Drawing.Size(863, 437);
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -184,7 +184,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(791, 62);
+            this.button2.Location = new System.Drawing.Point(791, 65);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 14;
@@ -248,7 +248,7 @@
             // rb2
             // 
             this.rb2.AutoSize = true;
-            this.rb2.Location = new System.Drawing.Point(661, 97);
+            this.rb2.Location = new System.Drawing.Point(690, 97);
             this.rb2.Name = "rb2";
             this.rb2.Size = new System.Drawing.Size(71, 16);
             this.rb2.TabIndex = 21;
@@ -259,7 +259,7 @@
             // 
             this.rb1.AutoSize = true;
             this.rb1.Checked = true;
-            this.rb1.Location = new System.Drawing.Point(582, 97);
+            this.rb1.Location = new System.Drawing.Point(611, 97);
             this.rb1.Name = "rb1";
             this.rb1.Size = new System.Drawing.Size(77, 16);
             this.rb1.TabIndex = 22;
@@ -307,8 +307,8 @@
             // 
             // Required
             // 
-            this.Required.FillWeight = 20F;
-            this.Required.HeaderText = "必填";
+            this.Required.FillWeight = 13F;
+            this.Required.HeaderText = "必填字段";
             this.Required.Name = "Required";
             this.Required.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Required.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -316,28 +316,25 @@
             // 
             // TView
             // 
-            this.TView.FalseValue = "";
-            this.TView.FillWeight = 20F;
-            this.TView.HeaderText = "TreeView可见";
+            this.TView.FillWeight = 15F;
+            this.TView.HeaderText = "TreeView字段";
             this.TView.Name = "TView";
-            this.TView.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TView.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.TView.ToolTipText = "默认为可见";
-            this.TView.TrueValue = "";
+            this.TView.ToolTipText = "勾选表示该字段在视图中可见。";
             // 
             // FView
             // 
-            this.FView.FillWeight = 20F;
-            this.FView.HeaderText = "FormView可见";
+            this.FView.FillWeight = 15F;
+            this.FView.HeaderText = "FormView字段";
             this.FView.Name = "FView";
-            this.FView.ToolTipText = "默认为可见";
-            this.FView.TrueValue = "1";
+            this.FView.ToolTipText = "勾选表示该字段在视图中可见。";
+            this.FView.TrueValue = "";
             // 
             // Searchable
             // 
-            this.Searchable.FillWeight = 29.08507F;
-            this.Searchable.HeaderText = "SearchView启用";
+            this.Searchable.FillWeight = 15F;
+            this.Searchable.HeaderText = "SearchView字段";
             this.Searchable.Name = "Searchable";
+            this.Searchable.ToolTipText = "勾选表示该字段可被搜索。";
             // 
             // Form1
             // 
