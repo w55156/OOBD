@@ -441,7 +441,7 @@ namespace OpenErpMB
                         sw_model_view.WriteLine("      <field name=\"view_type\">form</field>");
                         sw_model_view.WriteLine("      <field name=\"view_mode\">tree,form</field>");
                         sw_model_view.WriteLine("      <field name=\"view_id\" ref=\"view_" + model_name + "_tree\"/>");
-                        //sw_model_view.WriteLine("      <field name=\"search_view_id\" ref=\"view_" + model_name + "_search\"/>");
+                        sw_model_view.WriteLine("      <field name=\"search_view_id\" ref=\"view_" + model_name + "_search\"/>");
                         sw_model_view.WriteLine("    </record>");
                         #endregion
 

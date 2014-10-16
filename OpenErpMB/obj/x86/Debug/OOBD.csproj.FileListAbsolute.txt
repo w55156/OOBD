@@ -37,3 +37,4 @@ D:\Projects\C#\OOBD\OOBD\OpenErpMB\obj\x86\Debug\OOBD.exe.manifest
 D:\Projects\C#\OOBD\OOBD\OpenErpMB\obj\x86\Debug\OOBD.application
 D:\Projects\C#\OOBD\OOBD\OpenErpMB\obj\x86\Debug\OOBD.exe
 D:\Projects\C#\OOBD\OOBD\OpenErpMB\obj\x86\Debug\OOBD.pdb
+D:\Projects\C#\OOBD\OOBD\OpenErpMB\obj\x86\Debug\OOBD.csprojResolveAssemblyReference.cache
